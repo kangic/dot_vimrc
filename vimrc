@@ -134,35 +134,10 @@ let NERDTreeWinPos="left"
 autocmd vimenter * NERDTree
 
 "============== set ctags ========================
-map ,noi :set noai<CR>:set nocindent<CR>:set nosmartindent<CR>
-map ,sei :set ai<CR>:set cindent<CR>:set smartindent<CR>
 set tagbsearch
 
-set tags+=./tags,../tags,./include/tags,../include/tags,/usr/include/tags,/usr/src/linux/tags
+set tags+=./tags,../tags,./include/tags,/usr/include/tags
 
-if version >= 500
-	func! Sts()
-		let st = expand("<cword>")
-		exe "sts ".st
-	endfunc
-	nmap ,st : call Sts()<cr>
-
-	func! Tj()
-		let st = expand("<cword>")
-		exe "tj ".st
-	endfunc
-	nmap ,tj :call Tj()<cr>
-endif
-
-function! UPDATE_TAGS()
-	let _f_ = expand("%:p")
-	let _cmd_ = '"ctags -a -f ./tags --c++-kinds=+p --fields=+iaS --extra=+q " ' . '"' . _f_ . '"'
-	let _resp = system(_cmd_)
-	unlet _cmd_
-	unlet _f_
-	unlet _resp
-	endfunction
-autocmd BufWrite *.cc,*.h,*.c call UPDATE_TAGS()
 
 "============== Taglist settings =======================
 nmap <F5> :Tlist<CR><C-W><C-W>
@@ -193,7 +168,7 @@ set cst
 set nocsverb
 
 cs add /usr/include/cscope.out
-cs add /usr/src/linux/cscope.out
+"cs add /usr/src/linux/cscope.out
 
 set csverb
 
