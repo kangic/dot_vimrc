@@ -53,6 +53,7 @@ Plugin 'bufexplorer.zip'
 Plugin 'The-NERD-tree'
 Plugin 'Conque-Shell'
 Plugin 'bling/vim-airline'
+Plugin 'http://github.com/vim-scripts/SrcExpl'
 
 "For c/c++
 Plugin 'c.vim'
@@ -72,37 +73,63 @@ filetype plugin indent on
 "============== num func ======================
 function! NumberToggle()
 	if(&relativenumber == 1)
-		set number
+		set norelativenumber
+		set nu
 	else
 		set relativenumber
+		set nonu
 	endif
 endfunc
 
 map <F9> :call NumberToggle()<cr>
 
-"============== key mapping ======================
+"============== general key mapping ======================
 "Folding
-vmap <F2> zf 
+map <F2> v]}zf
 map <F3> zo
-map <F4> zc
 
-"plugin
-map <F5> :Tlist<CR><C-W><C-W>
-map <F6> :BufExplorer<CR>
-map <F7> :NERDTreeToggle .<CR>
-nmap <F8> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
-  \:!cscope -b -i cscope.files -f cscope.out<CR>
-    \:cs reset<CR>
+nmap <F6> :BufExplorer<CR>
+map <F10> :! zsh<CR>
 
-map <F12> <C-W><C-W> 
 map <PageUp> <C-U><C-U>
 map <PageDown> <C-D><C-D>
 
+"set window size
+nmap <s-h> <C-W><
+nmap <s-j> <C-W>-
+nmap <s-k> <C-W>+
+nmap <s-l> <C-W>>
+
+"move window
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j 
+nmap <c-k> <c-w>k 
+nmap <c-l> <c-w>l 
+
+
+"========= switch between file buffers ========
+map ,x :bn!<CR>	  " Switch to Next File Buffer
+map ,z :bp!<CR>	  " Switch to Previous File Buffer
+map ,w :bw<CR>	  " Close Current File Buffer
+
+map ,1 :b!1<CR>	  " Switch to File Buffer #1
+map ,2 :b!2<CR>	  " Switch to File Buffer #2
+map ,3 :b!3<CR>	  " Switch to File Buffer #3
+map ,4 :b!4<CR>	  " Switch to File Buffer #4
+map ,5 :b!5<CR>	  " Switch to File Buffer #5
+map ,6 :b!6<CR>	  " Switch to File Buffer #6
+map ,7 :b!7<CR>	  " Switch to File Buffer #7
+map ,8 :b!8<CR>	  " Switch to File Buffer #8
+map ,9 :b!9<CR>	  " Switch to File Buffer #9
+map ,0 :b!0<CR>	  " Switch to File Buffer #0
+
+
 "============== NERDTree =========================
+nmap <F9> :NERDTreeToggle .<CR>
 let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope'] 
-let NERDTreeQuitOnOpen=1
+"let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos="left"
-let NERDTreeQuitOnOpen=0
+"let NERDTreeQuitOnOpen=0
 
 autocmd vimenter * NERDTree
 
@@ -111,8 +138,7 @@ map ,noi :set noai<CR>:set nocindent<CR>:set nosmartindent<CR>
 map ,sei :set ai<CR>:set cindent<CR>:set smartindent<CR>
 set tagbsearch
 
-"============== set ctags =======================
-set tags=./tags,../tags,../include/tags,/usr/include/tags,~/include/tags
+set tags+=./tags,../tags,./include/tags,../include/tags,/usr/include/tags,/usr/src/linux/tags
 
 if version >= 500
 	func! Sts()
@@ -136,9 +162,11 @@ function! UPDATE_TAGS()
 	unlet _f_
 	unlet _resp
 	endfunction
-autocmd BufWrite *.cpp,*.h,*.c call UPDATE_TAGS()
+autocmd BufWrite *.cc,*.h,*.c call UPDATE_TAGS()
 
-"============== set Taglist =======================
+"============== Taglist settings =======================
+nmap <F5> :Tlist<CR><C-W><C-W>
+
 let Tlist_Auto_Open=1
 let Tlist_Auto_Update=1
 let Tlist_OnlyWindow=1
@@ -154,13 +182,33 @@ let Tlist_Exit_OnlyWindow=0
 let Tlist_WinWidth=50
 
 
-"============== set cscope =======================
+"============== cscope settings =======================
+nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
+  \:!cscope -b -R -i cscope.files -f cscope.out<CR>
+    \:cs reset<CR>
+
 set csprg=/usr/bin/cscope "linux type
 set csto=0
 set cst
+set nocsverb
+
+cs add /usr/include/cscope.out
+cs add /usr/src/linux/cscope.out
+
 set csverb
 
-"============== set vim-airline =======================
+
+"============== SrcExpl settings =======================
+nmap <F8> :SrcExplToggle<CR>
+let g:SrcExpl_winHeight = 8
+let g:SrcExpl_refreshTime = 300
+let g:SrcExpl_gobackKey = "<SPACE>"
+let g:SrcExpl_pluginList = ["__Tag_List__", "_NERD_tree_1", "Source_Explorer"]
+let g:SrcExpl_isUpdateTags = 0
+let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
+let g:SrcExpl_updateTagsKey = "<F12>"
+
+"============== vim-airline settings =======================
 let g:airline_powerline_fonts=1
 let g:airline_theme='powerlineish'
 let g:airline_enable_branch=1
