@@ -23,6 +23,11 @@ set novisualbell
 
 set showmatch
 
+"set column
+set textwidth=80
+execute "set colorcolumn=" . join(range(1,80), ',')
+highlight ColorColumn ctermbg=16 guibg=Black
+
 "For vim-airline
 set t_Co=256
 set laststatus=2
@@ -54,6 +59,7 @@ Plugin 'The-NERD-tree'
 Plugin 'Conque-Shell'
 Plugin 'bling/vim-airline'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
+Plugin 'vim-livedown'
 
 "For c/c++
 Plugin 'c.vim'
@@ -189,6 +195,16 @@ let g:airline_theme='powerlineish'
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=1
 
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='|'
+
+
+"============== vim-livedown settings =======================
+let g:livedown_autorun = 0
+let g:livedown_open = 1
+let g:livedown_port = 1337
+
+map gm :call LivedownPreview()<CR>
