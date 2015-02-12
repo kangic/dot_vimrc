@@ -62,7 +62,7 @@ Plugin 'http://github.com/vim-scripts/SrcExpl'
 Plugin 'vim-livedown'
 
 "For c/c++
-Plugin 'c.vim'
+"Plugin 'c.vim'
 Plugin 'a.vim'
 "For node.js
 Plugin 'node.js'
@@ -76,8 +76,10 @@ Plugin 'tomasr/molokai'
 call vundle#end()
 filetype plugin indent on
 
+colorscheme molokai
+
 "============== num func ======================
-function! NumberToggle()
+function! NumberToggle()"{{{
 	if(&relativenumber == 1)
 		set norelativenumber
 		set nu
@@ -87,12 +89,13 @@ function! NumberToggle()
 	endif
 endfunc
 
-map <F9> :call NumberToggle()<cr>
+map <F9> :call NumberToggle()<cr>"}}}
 
 "============== general key mapping ======================
 "Folding
 map <F2> v]}zf
 map <F3> zo
+map <F4> zd
 
 nmap <F6> :BufExplorer<CR>
 map <F10> :! zsh<CR>
