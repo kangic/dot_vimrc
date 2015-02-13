@@ -24,9 +24,9 @@ set novisualbell
 set showmatch
 
 "set column
-set textwidth=80
-execute "set colorcolumn=" . join(range(1,80), ',')
-highlight ColorColumn ctermbg=16 guibg=Black
+"set textwidth=80
+"execute "set colorcolumn=" . join(range(1,80), ',')
+"highlight ColorColumn ctermbg=16 guibg=Black
 
 "For vim-airline
 set t_Co=256
