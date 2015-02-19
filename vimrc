@@ -72,6 +72,8 @@ Plugin 'Markdown'
 Plugin 'Markdown-syntax'
 "Color schemes
 Plugin 'tomasr/molokai'
+"For python
+Plugin 'hynek/vim-python-pep8-indent'
 
 call vundle#end()
 filetype plugin indent on
@@ -79,7 +81,7 @@ filetype plugin indent on
 colorscheme molokai
 
 "============== num func ======================
-function! NumberToggle()"{{{
+function! NumberToggle()
 	if(&relativenumber == 1)
 		set norelativenumber
 		set nu
@@ -89,7 +91,7 @@ function! NumberToggle()"{{{
 	endif
 endfunc
 
-map <F9> :call NumberToggle()<cr>"}}}
+map <F9> :call NumberToggle()<cr>
 
 "============== general key mapping ======================
 "Folding
