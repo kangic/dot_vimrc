@@ -94,7 +94,6 @@ function! NumberToggle()
 	endif
 endfunc
 
-map <F9> :call NumberToggle()<cr>
 
 "============== general key mapping ======================
 "Folding
@@ -102,8 +101,17 @@ map <F2> v]}zf
 map <F3> zo
 map <F4> zd
 
+nmap <F5> :Tlist<CR><C-W><C-W>
 nmap <F6> :BufExplorer<CR>
+nmap <F7> :SrcExplToggle<CR>
+nmap <F8> :NERDTreeToggle .<CR>
+
+map <F9> :call NumberToggle()<cr>
 map <F10> :! zsh<CR>
+nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
+  \:!cscope -b -R -i cscope.files -f cscope.out<CR>
+    \:cs reset<CR>
+
 
 map <PageUp> <C-U><C-U>
 map <PageDown> <C-D><C-D>
@@ -139,7 +147,6 @@ map ,0 :b!0<CR>	  " Switch to File Buffer #0
 
 
 "============== NERDTree =========================
-nmap <F9> :NERDTreeToggle .<CR>
 let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope'] 
 "let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos="left"
@@ -154,8 +161,6 @@ set tags+=./tags,../tags,./include/tags,/usr/include/tags
 
 
 "============== Taglist settings =======================
-nmap <F5> :Tlist<CR><C-W><C-W>
-
 let Tlist_Auto_Open=1
 let Tlist_Auto_Update=1
 let Tlist_OnlyWindow=1
@@ -172,10 +177,6 @@ let Tlist_WinWidth=50
 
 
 "============== cscope settings =======================
-nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
-  \:!cscope -b -R -i cscope.files -f cscope.out<CR>
-    \:cs reset<CR>
-
 set csprg=/usr/bin/cscope "linux type
 set csto=0
 set cst
@@ -188,7 +189,6 @@ set csverb
 
 
 "============== SrcExpl settings =======================
-nmap <F8> :SrcExplToggle<CR>
 let g:SrcExpl_winHeight = 8
 let g:SrcExpl_refreshTime = 300
 let g:SrcExpl_gobackKey = "<SPACE>"
