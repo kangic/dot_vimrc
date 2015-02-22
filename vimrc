@@ -81,11 +81,7 @@ filetype plugin indent on
 
 colorscheme solarized
 let g:solarized_termcolors=256
-if has('gui_running')
-	set background=light
-else
-	set background=dark
-endif
+set background=dark
 
 "============== num func ======================
 function! NumberToggle()
