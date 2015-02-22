@@ -37,12 +37,18 @@ copy ./fonts/VeraMono-Powerline.ttf ~/.fonts/.
 fc-cache -vf ~/.fonts
 ```
 
-* vim-livedown plugin settings
+* vim-livedown plugin setting
 ```
 (sudo) apt-get install nodejs npm
 npm install -g livedown
 (sudo) ln -s /usr/bin/nodejs /usr/bin/node
 git clone git://github.com/shime/vim-livedown.git ~/.vim/bundle/vim-livedown
+```
+
+* vim-colors-solarized plugin setting
+```
+cd ~/.vim/bundle
+git clone git://github.com/altercation/vim-colors-solarized.git
 ```
 
 ### usage(update later)
