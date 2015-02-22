@@ -13,7 +13,6 @@ set wrap
 set ruler
 set shiftwidth=2
 set ff=unix
-set bg=dark
 set lazyredraw
 
 set backspace=eol,start,indent
@@ -74,11 +73,19 @@ Plugin 'Markdown-syntax'
 Plugin 'tomasr/molokai'
 "For python
 Plugin 'hynek/vim-python-pep8-indent'
+"solarized
+Plugin 'vim-colors-solarized'
 
 call vundle#end()
 filetype plugin indent on
 
-colorscheme molokai
+colorscheme solarized
+let g:solarized_termcolors=256
+if has('gui_running')
+	set background=light
+else
+	set background=dark
+endif
 
 "============== num func ======================
 function! NumberToggle()
