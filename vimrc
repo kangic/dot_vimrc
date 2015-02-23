@@ -2,6 +2,7 @@
 set encoding=utf-8
 set fenc=utf-8
 set termencoding=utf-8
+set term=screen-256color
 
 set hlsearch
 set ts=2
