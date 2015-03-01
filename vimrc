@@ -76,6 +76,8 @@ Plugin 'tomasr/molokai'
 Plugin 'hynek/vim-python-pep8-indent'
 "solarized
 Plugin 'vim-colors-solarized'
+"Codeforces
+Plugin 'Igorjan94/codeforces.vim'
 
 call vundle#end()
 filetype plugin indent on
