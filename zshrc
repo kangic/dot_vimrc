@@ -48,8 +48,24 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 # User configuration
-#export TERM="screen-256color"
+
+# tmux
 alias tmux="tmux -2"
+alias ta="tmux attach -t"
+alias tnew="tmux new -s"
+alias tls="tmux ls"
+alias tkill="tmux kill-session -t"
+
+# editing some configs
+alias ev="vim ~/.vimrc"
+alias et="vim ~/.tmux.conf"
+alias ez="vim ~/.zshrc"
+
+# git commands
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add"
+alias gp="git push"
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -80,3 +96,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
