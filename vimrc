@@ -59,7 +59,7 @@ Plugin 'The-NERD-tree'
 Plugin 'Conque-Shell'
 Plugin 'bling/vim-airline'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
-Plugin 'vim-livedown'
+Plugin 'vim-livedown' "manual install
 
 "For c/c++
 "Plugin 'c.vim'
@@ -74,10 +74,14 @@ Plugin 'Markdown-syntax'
 Plugin 'tomasr/molokai'
 "For python
 Plugin 'hynek/vim-python-pep8-indent'
-"solarized
+"solarized(manual install)
 Plugin 'vim-colors-solarized'
 "Codeforces
 Plugin 'Igorjan94/codeforces.vim'
+
+"vim-easy-align(manual install)
+Plugin 'vim-easy-install'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -219,3 +223,34 @@ let g:livedown_open = 1
 let g:livedown_port = 1337
 
 map gm :call LivedownPreview()<CR>
+
+"====== Codeforces settings ======
+let g:CodeForcesCount = 40
+let g:CodeForcesDomain = 'com'
+let g:CodeForcesFriends = 1
+
+let g:CodeForcesCommandStandings = 'badd'
+let g:CodeForcesCommandLoadTask = 'badd'
+let g:CodeForcesCommandSubmission = 'badd'
+
+let g:CodeForcesUsername = 'raymondk'
+
+
+noremap <leader>cfr <ESC>:CodeForcesSet_R_ound
+noremap <leader>cfS <ESC>:CodeForces_S_ubmission<CR>
+noremap <leader>cfp <ESC>:CodeForces_P_revStandings<CR>
+noremap <leader>cfn <ESC>:CodeForces_N_extStandings<CR>
+noremap <leader>cfs <ESC>:CodeForces_S_tandings<CR>
+noremap <leader>cff <ESC>:CodeForces_F_riendsSet<CR>
+noremap <leader>cfu <ESC>:CodeForces_U_nofficial<CR>
+noremap <leader>cfl <ESC>:CodeForces_L_oadTask
+noremap <leader>cfP <ESC>:CodeForces_P_ageStandings
+noremap <leader>cfR <ESC>:CodeForces_R_oomStandings
+
+noremap <S-F10> <ESC>:w<CR><ESC>:CodeForcesSubmit<CR>
+noremap <S-F11> <ESC>:w<CR><ESC>:CodeForcesUserSubmissions<CR>
+
+"====== vim-easy-align settings ======
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
