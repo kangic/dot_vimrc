@@ -38,6 +38,9 @@ set fdm=marker
 syntax on
 filetype on
 
+" ====== set for cpp ======
+au Bufenter *.\(c\|cc\|cpp\|h\) set et
+
 "============= set vundle ========================
 set nocompatible
 filetype off
@@ -81,6 +84,9 @@ Plugin 'Igorjan94/codeforces.vim'
 
 "vim-easy-align(manual install)
 Plugin 'vim-easy-install'
+
+"vim-cpplint
+Plugin 'vim-cpplint'
 
 
 call vundle#end()
@@ -254,3 +260,5 @@ noremap <S-F11> <ESC>:w<CR><ESC>:CodeForcesUserSubmissions<CR>
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+"====== vim-cpplint settings ======
+autocmd BufWritePost *.h,*.cc,*.cpp call Cpplint()
