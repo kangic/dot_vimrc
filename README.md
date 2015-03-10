@@ -42,6 +42,19 @@
 
 ### usage(update later)
 
+* reload vimrc
+  > so ~/.vimrc
+
+* nerdtree
+  * add bookmark to current dir
+    > :Bookmark `alias` 
+  * open a bookmarks
+    > shift + 'b'
+  * delete a bookmark
+    > shift + 'd'
+  * help
+    > ?
+
 * ctags usage
   * `ctags -R .` : make a tags file in command line
   * `ctrl + ']'`

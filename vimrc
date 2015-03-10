@@ -37,6 +37,14 @@ set fdm=marker
 syntax on
 filetype on
 
+set noswapfile
+
+set cursorline
+
+" ====== set auto changing to current dir ======
+set autochdir
+autocmd BufEnter * silent! lcd %:p:h
+
 " ====== set for cpp ======
 au Bufenter *.\(c\|cc\|cpp\|h\) set et
 
