@@ -101,6 +101,7 @@ filetype plugin indent on
 
 colorscheme solarized
 let g:solarized_termcolors=256
+let g:solarized_termtrans=1
 set background=dark
 
 "============== num func ======================
@@ -127,7 +128,6 @@ nmap <F7> :SrcExplToggle<CR>
 nmap <F8> :NERDTreeToggle .<CR>
 
 map <F9> :call NumberToggle()<cr>
-map <F10> :! zsh<CR>
 nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
   \:!cscope -b -R -i cscope.files -f cscope.out<CR>
     \:cs reset<CR>
