@@ -40,6 +40,7 @@ filetype on
 set noswapfile
 
 set cursorline
+set cursorcolumn
 
 " ====== set auto changing to current dir ======
 set autochdir
@@ -66,14 +67,13 @@ Plugin 'ctags.vim'
 Plugin 'taglist.vim'
 Plugin 'bufexplorer.zip'
 Plugin 'The-NERD-tree'
-Plugin 'Conque-Shell'
 Plugin 'bling/vim-airline'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
 Plugin 'vim-livedown' "manual install
 
 "For c/c++
-"Plugin 'c.vim'
 Plugin 'a.vim'
+Plugin 'c.vim'
 "For node.js
 Plugin 'node.js'
 "Markdown
@@ -86,15 +86,12 @@ Plugin 'tomasr/molokai'
 Plugin 'hynek/vim-python-pep8-indent'
 "solarized(manual install)
 Plugin 'vim-colors-solarized'
-"Codeforces
-Plugin 'Igorjan94/codeforces.vim'
 
 "vim-easy-align(manual install)
-Plugin 'vim-easy-install'
+Plugin 'junegunn/vim-easy-align'
 
 "vim-cpplint
 Plugin 'vim-cpplint'
-
 
 call vundle#end()
 filetype plugin indent on
@@ -105,13 +102,17 @@ let g:solarized_termtrans=1
 set background=dark
 
 "============== num func ======================
+let relativenumber = 1
+set relativenumber
+set number
+
 function! NumberToggle()
 	if(&relativenumber == 1)
 		set norelativenumber
 		set nu
 	else
 		set relativenumber
-		set nonu
+		set number
 	endif
 endfunc
 
@@ -177,7 +178,7 @@ autocmd vimenter * NERDTree
 "============== set ctags ========================
 set tagbsearch
 
-set tags+=./tags,../tags,./include/tags,/usr/include/tags
+set tags+=./tags,../tags,./include/tags,/usr/include/tags,/usr/include/c++/4.8/tags,/usr/src/linux/tags
 
 
 "============== Taglist settings =======================
@@ -202,8 +203,10 @@ set csto=0
 set cst
 set nocsverb
 
+cs add ./cscope.out
 cs add /usr/include/cscope.out
-"cs add /usr/src/linux/cscope.out
+cs add /usr/include/c++/4.8/cscope.out
+cs add /usr/src/linux/cscope.out
 
 set csverb
 
@@ -236,32 +239,6 @@ let g:livedown_open = 1
 let g:livedown_port = 1337
 
 map gm :call LivedownPreview()<CR>
-
-"====== Codeforces settings ======
-let g:CodeForcesCount = 40
-let g:CodeForcesDomain = 'com'
-let g:CodeForcesFriends = 1
-
-let g:CodeForcesCommandStandings = 'badd'
-let g:CodeForcesCommandLoadTask = 'badd'
-let g:CodeForcesCommandSubmission = 'badd'
-
-let g:CodeForcesUsername = 'raymondk'
-
-
-noremap <leader>cfr <ESC>:CodeForcesSet_R_ound
-noremap <leader>cfS <ESC>:CodeForces_S_ubmission<CR>
-noremap <leader>cfp <ESC>:CodeForces_P_revStandings<CR>
-noremap <leader>cfn <ESC>:CodeForces_N_extStandings<CR>
-noremap <leader>cfs <ESC>:CodeForces_S_tandings<CR>
-noremap <leader>cff <ESC>:CodeForces_F_riendsSet<CR>
-noremap <leader>cfu <ESC>:CodeForces_U_nofficial<CR>
-noremap <leader>cfl <ESC>:CodeForces_L_oadTask
-noremap <leader>cfP <ESC>:CodeForces_P_ageStandings
-noremap <leader>cfR <ESC>:CodeForces_R_oomStandings
-
-noremap <S-F10> <ESC>:w<CR><ESC>:CodeForcesSubmit<CR>
-noremap <S-F11> <ESC>:w<CR><ESC>:CodeForcesUserSubmissions<CR>
 
 "====== vim-easy-align settings ======
 vmap <Enter> <Plug>(EasyAlign)
