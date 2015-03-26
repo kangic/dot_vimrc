@@ -76,6 +76,8 @@ Plugin 'a.vim'
 Plugin 'c.vim'
 "For node.js
 Plugin 'node.js'
+Plugin 'jade.vim'
+
 "Markdown
 Plugin 'MarkdownFootnotes'
 Plugin 'Markdown'
