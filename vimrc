@@ -145,13 +145,6 @@ nmap <s-j> <C-W>-
 nmap <s-k> <C-W>+
 nmap <s-l> <C-W>>
 
-"move window
-nmap <c-h> <c-w>h
-nmap <c-j> <c-w>j 
-nmap <c-k> <c-w>k 
-nmap <c-l> <c-w>l 
-
-
 "========= switch between file buffers ========
 map ,x :bn!<CR>	  " Switch to Next File Buffer
 map ,z :bp!<CR>	  " Switch to Previous File Buffer
