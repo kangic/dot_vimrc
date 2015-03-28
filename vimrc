@@ -1,4 +1,5 @@
 "============== setting information ==============
+scriptencoding utf-8
 set encoding=utf-8
 set fenc=utf-8
 set termencoding=utf-8
@@ -23,10 +24,6 @@ set novisualbell
 
 set showmatch
 
-if exists('+colorcolumn')
-	set colorcolumn=80
-endif
-
 "For vim-airline
 set t_Co=256
 set laststatus=2
@@ -41,6 +38,15 @@ set noswapfile
 
 set cursorline
 set cursorcolumn
+
+set textwidth=80
+set cc=81
+
+
+"====== diff mode ======
+if &diff
+	syntax off
+endif
 
 " ====== set auto changing to current dir ======
 set autochdir
@@ -86,8 +92,10 @@ Plugin 'Markdown-syntax'
 Plugin 'tomasr/molokai'
 "For python
 Plugin 'hynek/vim-python-pep8-indent'
-"solarized(manual install)
-Plugin 'vim-colors-solarized'
+
+"colorschemes
+Plugin 'vim-colors-solarized' "manual install
+Plugin 'railscasts'
 
 "vim-easy-align(manual install)
 Plugin 'junegunn/vim-easy-align'
@@ -95,13 +103,17 @@ Plugin 'junegunn/vim-easy-align'
 "vim-cpplint
 Plugin 'vim-cpplint'
 
+Plugin 'szw/vim-ctrlspace'
+
 call vundle#end()
 filetype plugin indent on
 
-colorscheme solarized
+"colorscheme railscasts 
+colorscheme solarized 
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
+
 
 "============== num func ======================
 let relativenumber = 1
@@ -177,7 +189,7 @@ set tags+=./tags,../tags,./include/tags,/usr/include/tags,/usr/include/c++/4.8/t
 
 
 "============== Taglist settings =======================
-let Tlist_Auto_Open=1
+"let Tlist_Auto_Open=1
 let Tlist_Auto_Update=1
 let Tlist_OnlyWindow=1
 let Tlist_Show_One_File=1
@@ -227,6 +239,8 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='|'
 
+let g:airline_exclude_preview=1 "for vim-ctrlspace
+
 
 "============== vim-livedown settings =======================
 let g:livedown_autorun = 0
@@ -241,3 +255,24 @@ nmap ga <Plug>(EasyAlign)
 
 "====== vim-cpplint settings ======
 autocmd BufWritePost *.h,*.cc,*.cpp call Cpplint()
+
+"====== vim-ctrlspace settings ======
+set hidden
+
+" Colors of CtrlSpace for Solarized Dark
+" (MacVim and Console Vim under iTerm2 with Solarized Dark theme)
+
+" Based on Solarized TablineSel
+hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
+
+" Based on Solarized Tabline/TablineFill
+" original Normal
+" hi CtrlSpaceNormal   guifg=#839496 guibg=#073642 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
+" tweaked Normal with darker background in Gui
+hi CtrlSpaceNormal   guifg=#839496 guibg=#021B25 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
+
+" Based on Title
+hi CtrlSpaceSearch   guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
+
+" Based on PmenuThumb
+hi CtrlSpaceStatus   guifg=#839496 guibg=#002b36 gui=reverse term=reverse cterm=reverse ctermfg=12 ctermbg=8
