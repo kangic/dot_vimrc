@@ -48,11 +48,11 @@ if &diff
 	syntax off
 endif
 
-" ====== set auto changing to current dir ======
+"====== set auto changing to current dir ======
 set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 
-" ====== set for cpp ======
+"====== set for cpp ======
 au Bufenter *.\(c\|cc\|cpp\|h\) set et
 
 "============= set vundle ========================
@@ -64,14 +64,13 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-
 "============= My vundle plugin list ============
 Plugin 'superSnipMate'
 Plugin 'matchparenpp'
 Plugin 'cscope.vim'
 Plugin 'ctags.vim'
 Plugin 'taglist.vim'
-Plugin 'bufexplorer.zip'
+"Plugin 'bufexplorer.zip'
 Plugin 'The-NERD-tree'
 Plugin 'bling/vim-airline'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
@@ -80,6 +79,7 @@ Plugin 'vim-livedown' "manual install
 "For c/c++
 Plugin 'a.vim'
 Plugin 'c.vim'
+
 "For node.js
 Plugin 'node.js'
 Plugin 'jade.vim'
@@ -88,14 +88,14 @@ Plugin 'jade.vim'
 Plugin 'MarkdownFootnotes'
 Plugin 'Markdown'
 Plugin 'Markdown-syntax'
-"Color schemes
-Plugin 'tomasr/molokai'
+
 "For python
 Plugin 'hynek/vim-python-pep8-indent'
 
 "colorschemes
 Plugin 'vim-colors-solarized' "manual install
 Plugin 'railscasts'
+Plugin 'tomasr/molokai'
 
 "vim-easy-align(manual install)
 Plugin 'junegunn/vim-easy-align'
@@ -103,6 +103,7 @@ Plugin 'junegunn/vim-easy-align'
 "vim-cpplint
 Plugin 'vim-cpplint'
 
+"vim-ctrlspace
 Plugin 'szw/vim-ctrlspace'
 
 call vundle#end()
@@ -137,8 +138,9 @@ map <F2> v]}zf
 map <F3> zo
 map <F4> zd
 
-nmap <F5> :Tlist<CR><C-W><C-W>
-nmap <F6> :BufExplorer<CR>
+"nmap <F5> :BufExplorer<CR>
+nmap <F5> :CtrlSpace<CR>
+nmap <F6> :Tlist<CR><C-W><C-W>
 nmap <F7> :SrcExplToggle<CR>
 nmap <F8> :NERDTreeToggle .<CR>
 
@@ -146,7 +148,6 @@ map <F9> :call NumberToggle()<cr>
 nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
   \:!cscope -b -R -i cscope.files -f cscope.out<CR>
     \:cs reset<CR>
-
 
 map <PageUp> <C-U><C-U>
 map <PageDown> <C-D><C-D>
@@ -161,18 +162,6 @@ nmap <s-l> <C-W>>
 map ,x :bn!<CR>	  " Switch to Next File Buffer
 map ,z :bp!<CR>	  " Switch to Previous File Buffer
 map ,w :bw<CR>	  " Close Current File Buffer
-
-map ,1 :b!1<CR>	  " Switch to File Buffer #1
-map ,2 :b!2<CR>	  " Switch to File Buffer #2
-map ,3 :b!3<CR>	  " Switch to File Buffer #3
-map ,4 :b!4<CR>	  " Switch to File Buffer #4
-map ,5 :b!5<CR>	  " Switch to File Buffer #5
-map ,6 :b!6<CR>	  " Switch to File Buffer #6
-map ,7 :b!7<CR>	  " Switch to File Buffer #7
-map ,8 :b!8<CR>	  " Switch to File Buffer #8
-map ,9 :b!9<CR>	  " Switch to File Buffer #9
-map ,0 :b!0<CR>	  " Switch to File Buffer #0
-
 
 "============== NERDTree =========================
 let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope'] 
