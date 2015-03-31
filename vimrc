@@ -70,7 +70,6 @@ Plugin 'matchparenpp'
 Plugin 'cscope.vim'
 Plugin 'ctags.vim'
 Plugin 'taglist.vim'
-"Plugin 'bufexplorer.zip'
 Plugin 'The-NERD-tree'
 Plugin 'bling/vim-airline'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
@@ -117,7 +116,7 @@ set background=dark
 
 
 "============== num func ======================
-let relativenumber = 1
+let relativenumber=1
 set relativenumber
 set number
 
@@ -138,8 +137,7 @@ map <F2> v]}zf
 map <F3> zo
 map <F4> zd
 
-"nmap <F5> :BufExplorer<CR>
-nmap <F5> :CtrlSpace<CR>
+"nmap <F5> :CtrlSpace<CR> "do not need shortcut. default : ctrl-space
 nmap <F6> :Tlist<CR><C-W><C-W>
 nmap <F7> :SrcExplToggle<CR>
 nmap <F8> :NERDTreeToggle .<CR>
@@ -164,7 +162,7 @@ map ,z :bp!<CR>	  " Switch to Previous File Buffer
 map ,w :bw<CR>	  " Close Current File Buffer
 
 "============== NERDTree =========================
-let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope'] 
+let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope']
 "let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos="left"
 "let NERDTreeQuitOnOpen=0
@@ -208,13 +206,13 @@ set csverb
 
 
 "============== SrcExpl settings =======================
-let g:SrcExpl_winHeight = 8
-let g:SrcExpl_refreshTime = 300
-let g:SrcExpl_gobackKey = "<SPACE>"
-let g:SrcExpl_pluginList = ["__Tag_List__", "_NERD_tree_1", "Source_Explorer"]
-let g:SrcExpl_isUpdateTags = 0
-let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
-let g:SrcExpl_updateTagsKey = "<F12>"
+let g:SrcExpl_winHeight=8
+let g:SrcExpl_refreshTime=300
+let g:SrcExpl_gobackKey="<SPACE>"
+let g:SrcExpl_pluginList=["__Tag_List__", "_NERD_tree_1", "Source_Explorer"]
+let g:SrcExpl_isUpdateTags=0
+let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -R ."
+let g:SrcExpl_updateTagsKey="<F12>"
 
 "============== vim-airline settings =======================
 let g:airline_powerline_fonts=1
@@ -224,17 +222,14 @@ let g:airline_enable_syntastic=1
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep=' '
-let g:airline#extensions#tabline#left_alt_sep='|'
-
-let g:airline_exclude_preview=1 "for vim-ctrlspace
-
+"let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#left_sep=' '
+"let g:airline#extensions#tabline#left_alt_sep='|'
 
 "============== vim-livedown settings =======================
-let g:livedown_autorun = 0
-let g:livedown_open = 1
-let g:livedown_port = 1337
+let g:livedown_autorun=0
+let g:livedown_open=1
+let g:livedown_port=1337
 
 map gm :call LivedownPreview()<CR>
 
@@ -247,21 +242,11 @@ autocmd BufWritePost *.h,*.cc,*.cpp call Cpplint()
 
 "====== vim-ctrlspace settings ======
 set hidden
+set showtabline=1
 
-" Colors of CtrlSpace for Solarized Dark
-" (MacVim and Console Vim under iTerm2 with Solarized Dark theme)
+let g:airline_exclude_preview=1 "for vim-ctrlspace
 
-" Based on Solarized TablineSel
-hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
-
-" Based on Solarized Tabline/TablineFill
-" original Normal
-" hi CtrlSpaceNormal   guifg=#839496 guibg=#073642 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
-" tweaked Normal with darker background in Gui
-hi CtrlSpaceNormal   guifg=#839496 guibg=#021B25 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
-
-" Based on Title
-hi CtrlSpaceSearch   guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE term=bold cterm=bold
-
-" Based on PmenuThumb
-hi CtrlSpaceStatus   guifg=#839496 guibg=#002b36 gui=reverse term=reverse cterm=reverse ctermfg=12 ctermbg=8
+hi CtrlSpaceSelected term=reverse ctermfg=187  ctermbg=23  cterm=bold
+hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
+hi CtrlSpaceSearch   ctermfg=220  ctermbg=NONE cterm=bold
+hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
