@@ -78,6 +78,7 @@ Plugin 'vim-livedown' "manual install
 "For c/c++
 Plugin 'a.vim'
 Plugin 'c.vim'
+Plugin 'SingleCompile'
 
 "For node.js
 Plugin 'node.js'
@@ -104,6 +105,7 @@ Plugin 'vim-cpplint'
 
 "vim-ctrlspace
 Plugin 'szw/vim-ctrlspace'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -137,12 +139,14 @@ map <F2> v]}zf
 map <F3> zo
 map <F4> zd
 
-"nmap <F5> :CtrlSpace<CR> "do not need shortcut. default : ctrl-space
-nmap <F6> :Tlist<CR><C-W><C-W>
-nmap <F7> :SrcExplToggle<CR>
+nmap <F5> :Tlist<CR><C-W><C-W>
+nmap <F6> :SrcExplToggle<CR>
+map <F7> :call NumberToggle()<CR>
 nmap <F8> :NERDTreeToggle .<CR>
 
-map <F9> :call NumberToggle()<cr>
+nmap <F9> :SCCompiler<CR>
+nmap <F10> :SCCompilerRun<CR>
+
 nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
   \:!cscope -b -R -i cscope.files -f cscope.out<CR>
     \:cs reset<CR>
@@ -167,7 +171,7 @@ let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope']
 let NERDTreeWinPos="left"
 "let NERDTreeQuitOnOpen=0
 
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 
 "============== set ctags ========================
 set tagbsearch
