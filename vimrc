@@ -7,6 +7,7 @@ set term=screen-256color
 
 set hlsearch
 set ts=2
+set expandtab
 set rnu
 set cindent
 set autoindent
