@@ -38,11 +38,10 @@ filetype on
 set noswapfile
 
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 
 set textwidth=80
 set cc=81
-
 
 "====== diff mode ======
 if &diff
@@ -68,8 +67,7 @@ Plugin 'gmarik/Vundle.vim'
 "============= My vundle plugin list ============
 Plugin 'superSnipMate'
 Plugin 'matchparenpp'
-Plugin 'cscope.vim'
-Plugin 'ctags.vim'
+Plugin 'gtags.vim'
 Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'
 Plugin 'bling/vim-airline'
@@ -100,9 +98,6 @@ Plugin 'tomasr/molokai'
 
 "vim-easy-align(manual install)
 Plugin 'junegunn/vim-easy-align'
-
-"vim-cpplint
-Plugin 'vim-cpplint'
 
 "vim-ctrlspace
 Plugin 'szw/vim-ctrlspace'
@@ -148,10 +143,6 @@ nmap <F8> :NERDTreeToggle .<CR>
 nmap <F9> :SCCompiler<CR>
 nmap <F10> :SCCompilerRun<CR>
 
-nmap <F12> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
-  \:!cscope -b -R -i cscope.files -f cscope.out<CR>
-    \:cs reset<CR>
-
 map <PageUp> <C-U><C-U>
 map <PageDown> <C-D><C-D>
 
@@ -170,18 +161,18 @@ map ,w :bw<CR>	  " Close Current File Buffer
 let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope']
 "let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos="left"
-"let NERDTreeQuitOnOpen=0
 
 "autocmd vimenter * NERDTree
 
-"============== set ctags ========================
-set tagbsearch
-
-set tags+=./tags,../tags,./include/tags,/usr/include/tags,/usr/include/c++/4.8/tags,/usr/src/linux/tags
-
+"============== gtags.vim settings =======================
+let g:Gtags_Auto_Update=1
+nmap <C-]> :Gtags<CR><CR>
+nmap <C-\> :Gtags -r<CR><CR>
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
 
 "============== Taglist settings =======================
-"let Tlist_Auto_Open=1
+let Tlist_Auto_Open=0
 let Tlist_Auto_Update=1
 let Tlist_OnlyWindow=1
 let Tlist_Show_One_File=1
@@ -194,21 +185,6 @@ let Tlist_Use_Right_Window=1
 let Tlist_Inc_Winwidth=0
 let Tlist_Exit_OnlyWindow=0
 let Tlist_WinWidth=50
-
-
-"============== cscope settings =======================
-set csprg=/usr/bin/cscope "linux type
-set csto=0
-set cst
-set nocsverb
-
-cs add ./cscope.out
-cs add /usr/include/cscope.out
-cs add /usr/include/c++/4.8/cscope.out
-cs add /usr/src/linux/cscope.out
-
-set csverb
-
 
 "============== SrcExpl settings =======================
 let g:SrcExpl_winHeight=8
@@ -243,7 +219,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "====== vim-cpplint settings ======
-autocmd BufWritePost *.h,*.cc,*.cpp call Cpplint()
+"autocmd BufWritePost *.h,*.cc,*.cpp call Cpplint()
 
 "====== vim-ctrlspace settings ======
 set hidden
@@ -255,3 +231,5 @@ hi CtrlSpaceSelected term=reverse ctermfg=187  ctermbg=23  cterm=bold
 hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
 hi CtrlSpaceSearch   ctermfg=220  ctermbg=NONE cterm=bold
 hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
+
+hi CursorLine cterm=NONE,underline
