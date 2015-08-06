@@ -233,3 +233,5 @@ hi CtrlSpaceSearch   ctermfg=220  ctermbg=NONE cterm=bold
 hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
 
 hi CursorLine cterm=NONE,underline
+
+let g:CtrlSpaceSaveWorkspaceOnExit=1
