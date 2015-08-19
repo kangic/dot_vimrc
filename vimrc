@@ -234,4 +234,4 @@ hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
 
 hi CursorLine cterm=NONE,underline
 
-let g:CtrlSpaceSaveWorkspaceOnExit=0
+let g:CtrlSpaceSaveWorkspaceOnExit=1
