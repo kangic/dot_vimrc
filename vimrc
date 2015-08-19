@@ -49,8 +49,8 @@ if &diff
 endif
 
 "====== set auto changing to current dir ======
-set autochdir
-autocmd BufEnter * silent! lcd %:p:h
+"set autochdir
+"autocmd BufEnter * silent! lcd %:p:h
 
 "====== set for cpp ======
 au Bufenter *.\(c\|cc\|cpp\|h\) set et
