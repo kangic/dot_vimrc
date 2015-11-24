@@ -78,8 +78,6 @@ Plugin 'vim-livedown' "manual install
 Plugin 'a.vim'
 Plugin 'c.vim'
 Plugin 'SingleCompile'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Valloric/ListToggle'
 Plugin 'scrooloose/syntastic'
 
 "For node.js
