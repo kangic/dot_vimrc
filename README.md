@@ -15,15 +15,12 @@
 
 ### after above things
 
-* install ctags and cscope
-> (sudo) apt-get install ctags cscope
-
-* copy mkcscope.sh
-> (sudo) cp mkcscope.sh /usr/bin/.
+* install global
+> (sudo) apt-get install global
 
 * copy a font file and set the font to terminal preference
 > mkdir ~/.fonts<br/>
-> copy ./fonts/VeraMono-Powerline.ttf ~/.fonts/.<br/>
+> cp ./fonts/VeraMono-Powerline.ttf ~/.fonts/.<br/>
 > fc-cache -vf ~/.fonts
 
 * vim-livedown plugin setting

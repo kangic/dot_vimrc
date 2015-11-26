@@ -70,7 +70,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'superSnipMate'
 Plugin 'matchparenpp'
 Plugin 'gtags.vim'
-Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'
 Plugin 'bling/vim-airline'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
@@ -80,8 +79,6 @@ Plugin 'vim-livedown' "manual install
 Plugin 'a.vim'
 Plugin 'c.vim'
 Plugin 'SingleCompile'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Valloric/ListToggle'
 Plugin 'scrooloose/syntastic'
 
 "For node.js
@@ -175,21 +172,6 @@ nmap <C-]> :Gtags<CR><CR>
 nmap <C-\> :Gtags -r<CR><CR>
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
-
-"============== Taglist settings =======================
-let Tlist_Auto_Open=0
-let Tlist_Auto_Update=1
-let Tlist_OnlyWindow=1
-let Tlist_Show_One_File=1
-let Tlist_Close_On_Select=0
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Display_Tag_Scope=1
-let Tlist_Display_Prototype=1
-let Tlist_Sort_Type="name"
-let Tlist_Use_Right_Window=1
-let Tlist_Inc_Winwidth=0
-let Tlist_Exit_OnlyWindow=0
-let Tlist_WinWidth=50
 
 "============== SrcExpl settings =======================
 let g:SrcExpl_winHeight=8
