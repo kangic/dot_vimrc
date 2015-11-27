@@ -40,8 +40,10 @@ set noswapfile
 set cursorline
 "set cursorcolumn
 
-set textwidth=80
-set cc=81
+"set textwidth=80
+"set cc=81
+
+set wildmenu
 
 "====== diff mode ======
 if &diff
