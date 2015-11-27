@@ -220,6 +220,3 @@ hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
 hi CursorLine cterm=NONE,underline
 
 let g:CtrlSpaceSaveWorkspaceOnExit=1
-
-"====== YouCompleteMe settings ======
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
