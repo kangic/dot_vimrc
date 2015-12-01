@@ -188,9 +188,7 @@ let g:airline_theme='powerlineish'
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=1
 
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-"let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#left_sep=' '
 "let g:airline#extensions#tabline#left_alt_sep='|'
 
@@ -199,7 +197,7 @@ let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=1337
 
-map gm :call LivedownPreview()<CR>
+nmap gm :LivedownToggle<CR>
 
 "====== vim-easy-align settings ======
 vmap <Enter> <Plug>(EasyAlign)
