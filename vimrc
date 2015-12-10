@@ -104,6 +104,7 @@ Plugin 'junegunn/vim-easy-align'
 "vim-ctrlspace
 Plugin 'szw/vim-ctrlspace'
 
+Plugin 'ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -221,3 +222,11 @@ hi CtrlSpaceStatus   ctermfg=230  ctermbg=234  cterm=NONE
 hi CursorLine cterm=NONE,underline
 
 let g:CtrlSpaceSaveWorkspaceOnExit=1
+
+"====== ctrlp settings ======
+let g:ctrlp_map = '<c-p>'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore += '\v\.(exe|so|dll)$'
