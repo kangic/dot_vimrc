@@ -81,7 +81,9 @@ Plugin 'vim-livedown' "manual install
 Plugin 'a.vim'
 Plugin 'c.vim'
 Plugin 'SingleCompile'
+
 Plugin 'scrooloose/syntastic'
+Plugin 'pathogen.vim'
 
 "For node.js
 Plugin 'node.js'
@@ -235,3 +237,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore += '\v\.(exe|so|dll)$'
+
+"====== pathogen settings ======
+execute pathogen#infect()
+
+"====== syntastic settings ======
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
