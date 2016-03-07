@@ -71,7 +71,9 @@ Plugin 'superSnipMate'
 Plugin 'matchparenpp'
 Plugin 'gtags.vim'
 Plugin 'The-NERD-tree'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
 Plugin 'vim-livedown' "manual install
 
@@ -103,6 +105,9 @@ Plugin 'junegunn/vim-easy-align'
 
 "vim-ctrlspace
 Plugin 'szw/vim-ctrlspace'
+
+"For git
+Plugin 'fugitive.vim'
 
 Plugin 'ctrlp.vim'
 
