@@ -45,6 +45,8 @@ set cursorline
 
 set wildmenu
 
+
+
 "====== diff mode ======
 if &diff
 	syntax off
@@ -71,19 +73,19 @@ Plugin 'superSnipMate'
 Plugin 'matchparenpp'
 Plugin 'gtags.vim'
 Plugin 'The-NERD-tree'
-"Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'http://github.com/vim-scripts/SrcExpl'
 Plugin 'vim-livedown' "manual install
 
-"For c/c++
+"For development
 Plugin 'a.vim'
 Plugin 'c.vim'
 Plugin 'SingleCompile'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'pathogen.vim'
+Plugin 'AutoComplPop'
 
 "For node.js
 Plugin 'node.js'
@@ -98,9 +100,8 @@ Plugin 'Markdown-syntax'
 Plugin 'hynek/vim-python-pep8-indent'
 
 "colorschemes
-Plugin 'vim-colors-solarized' "manual install
-Plugin 'railscasts'
-Plugin 'tomasr/molokai'
+"Plugin 'vim-colors-solarized' "manual install
+Plugin 'altercation/vim-colors-solarized'
 
 "vim-easy-align(manual install)
 Plugin 'junegunn/vim-easy-align'
@@ -115,12 +116,6 @@ Plugin 'ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
-
-"colorscheme railscasts 
-colorscheme solarized 
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-set background=dark
 
 
 "============== num func ======================
@@ -173,6 +168,12 @@ let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope']
 let NERDTreeWinPos="left"
 
 "autocmd vimenter * NERDTree
+
+"============== c.vim settings =======================
+"
+let g:C_UseTool_cmake='yes'
+let g:C_UseTool_doxygen='yes'
+
 
 "============== gtags.vim settings =======================
 let g:Gtags_Auto_Update=1
@@ -250,4 +251,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+set background=dark
+colorscheme solarized 
 
