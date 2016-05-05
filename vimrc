@@ -267,6 +267,6 @@ map <silent> <F12> :call BufferList()<CR>
 
 "====== buffer moving settings =====
 set hidden
-nnoremap <S-h> :bnext<CR>
-nnoremap <S-l> :bprev<CR>
+nnoremap <S-l> :bnext<CR>
+nnoremap <S-h> :bprev<CR>
 
