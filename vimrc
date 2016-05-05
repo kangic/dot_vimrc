@@ -107,12 +107,13 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'junegunn/vim-easy-align'
 
 "vim-ctrlspace
-Plugin 'szw/vim-ctrlspace'
+"Plugin 'szw/vim-ctrlspace'
 
 "For git
 Plugin 'fugitive.vim'
 
 Plugin 'ctrlp.vim'
+Plugin 'bufferlist.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -251,10 +252,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_c_remove_include_errors = 1
+let g:syntastic_cpp_remove_include_errors = 1
 
 
+"====== theme settings ======
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 set background=dark
 colorscheme solarized 
+
+"====== bufferlist.vim settings =====
+map <silent> <F12> :call BufferList()<CR>
+
+"====== buffer moving settings =====
+set hidden
+nnoremap <S-h> :bnext<CR>
+nnoremap <S-l> :bprev<CR>
 
