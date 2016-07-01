@@ -119,6 +119,40 @@ call vundle#end()
 filetype plugin indent on
 
 
+"============== neobundle ======================
+"Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
+if &compatible
+  set nocompatible
+endif
+
+" Required:
+set runtimepath^=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+NeoBundle "hsanson/vim-android"
+
+" Note: You don't set neobundle setting in .gvimrc!
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+
+
 "============== num func ======================
 let relativenumber=1
 set relativenumber
@@ -248,12 +282,20 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_c_remove_include_errors = 1
 let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_mode_map = {'mode' : 'passive'}
+
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+
+nmap <C-w><C-e> :SyntasticCheck<CR>
+nmap <C-w><C-t> :SyntasticToggleMode<CR>
+
 
 
 "====== theme settings ======
@@ -269,4 +311,9 @@ map <silent> <F12> :call BufferList()<CR>
 set hidden
 nnoremap <S-l> :bnext<CR>
 nnoremap <S-h> :bprev<CR>
+nnoremap <S-k> :bdelete<CR>
 
+"====== vim-android settings =====
+let g:gradle_path='/usr/bin'
+let g:android_sdk_path='/home/raymondk/Android/Sdk'
+let g:android_adb_tool='/home/raymondk/Android/Sdk/platform-tools/adb'
