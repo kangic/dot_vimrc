@@ -118,41 +118,6 @@ Plugin 'bufferlist.vim'
 call vundle#end()
 filetype plugin indent on
 
-
-"============== neobundle ======================
-"Note: Skip initialization for vim-tiny or vim-small.
-if 0 | endif
-
-if &compatible
-  set nocompatible
-endif
-
-" Required:
-set runtimepath^=~/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-NeoBundle "hsanson/vim-android"
-
-" Note: You don't set neobundle setting in .gvimrc!
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
-
-
 "============== num func ======================
 let relativenumber=1
 set relativenumber
