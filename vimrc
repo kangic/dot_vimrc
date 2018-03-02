@@ -80,7 +80,6 @@ Plugin 'vim-livedown' "manual install
 
 "For development
 Plugin 'a.vim'
-Plugin 'c.vim'
 Plugin 'SingleCompile'
 
 Plugin 'scrooloose/syntastic'
@@ -105,9 +104,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 "vim-easy-align(manual install)
 Plugin 'junegunn/vim-easy-align'
-
-"vim-ctrlspace
-"Plugin 'szw/vim-ctrlspace'
 
 "For git
 Plugin 'fugitive.vim'
@@ -277,8 +273,3 @@ set hidden
 nnoremap <S-l> :bnext<CR>
 nnoremap <S-h> :bprev<CR>
 nnoremap <S-k> :bdelete<CR>
-
-"====== vim-android settings =====
-let g:gradle_path='/usr/bin'
-let g:android_sdk_path='/home/raymondk/Android/Sdk'
-let g:android_adb_tool='/home/raymondk/Android/Sdk/platform-tools/adb'
