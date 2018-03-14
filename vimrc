@@ -45,8 +45,6 @@ set cursorline
 
 set wildmenu
 
-
-
 "====== diff mode ======
 if &diff
 	syntax off
@@ -262,8 +260,8 @@ nmap <C-w><C-t> :SyntasticToggleMode<CR>
 "====== theme settings ======
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-set background=dark
-colorscheme solarized 
+"set background=dark
+"colorscheme solarized 
 
 "====== bufferlist.vim settings =====
 map <silent> <F12> :call BufferList()<CR>
