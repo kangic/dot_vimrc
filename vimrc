@@ -170,11 +170,11 @@ let g:C_UseTool_doxygen='yes'
 
 
 "============== gtags.vim settings =======================
-let g:Gtags_Auto_Update=1
-nmap <C-]> :Gtags<CR><CR>
-nmap <C-\> :Gtags -r<CR><CR>
-nmap <C-n> :cn<CR>
-nmap <C-p> :cp<CR>
+"let g:Gtags_Auto_Update=1
+"nmap <C-]> :Gtags<CR><CR>
+"nmap <C-\> :Gtags -r<CR><CR>
+"nmap <C-n> :cn<CR>
+"nmap <C-p> :cp<CR>
 
 "============== SrcExpl settings =======================
 let g:SrcExpl_winHeight=8
@@ -260,8 +260,8 @@ nmap <C-w><C-t> :SyntasticToggleMode<CR>
 "====== theme settings ======
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-"set background=dark
-"colorscheme solarized 
+set background=dark
+"colorscheme zenburn
 
 "====== bufferlist.vim settings =====
 map <silent> <F12> :call BufferList()<CR>
@@ -271,3 +271,10 @@ set hidden
 nnoremap <S-l> :bnext<CR>
 nnoremap <S-h> :bprev<CR>
 nnoremap <S-k> :bdelete<CR>
+
+let GtagsCscope_Auto_Map = 1
+let GtagsCscope_Ignore_Case = 1
+let GtagsCscope_Absolute_Path = 1
+let GtagsCscope_Keep_Alive = 1
+let GtagsCscope_Auto_Load = 1
+set cscopetag
