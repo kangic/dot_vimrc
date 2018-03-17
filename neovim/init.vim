@@ -26,7 +26,7 @@ Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 
-"============== general settings =======================
+"== general settings
 " Map the leader key to SPACE
 let mapleader="\<SPACE>"
 
@@ -41,6 +41,7 @@ set formatoptions+=o    " Continue comment marker in new lines.
 set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=4           " Render TABs using this many spaces.
 set shiftwidth=4        " Indentation amount for < and > commands.
+set cursorline          " Hilight current line
 
 set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 
@@ -49,6 +50,8 @@ set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
 set backspace=eol,start,indent
+
+set clipboard=unnamed   " Yank/Paste to system clipboard
 
 if !&scrolloff
 	set scrolloff=3       	" Show next 3 lines while scrolling.
@@ -62,7 +65,7 @@ set nostartofline		" Do not jump to first character with page commands.
 " Tell Vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
 if &listchars ==# 'eol:$'
-    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+    set listchars=tab:>\,trail:-,extends:>,precedes:<,nbsp:+
 endif
 set list                " Show problematic characters.
 
@@ -108,6 +111,8 @@ map <F4> zd
 
 nmap <F8> :NERDTreeToggle .<CR>
 
+" Escape input mode in terminal
+tnoremap <ESC> <C-\><C-n>
 
 "== vim-airline
 let g:airline#extensions#tabline#enabled = 2
@@ -120,7 +125,7 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
-let g:airline_theme= 'minimalist'
+let g:airline_theme= 'bubblegum'
 
 "== NERDTree
 let NERDTreeIgnore=['\.vim$','\~$','*.o','tags','*.out','cscope']
@@ -138,3 +143,15 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore += '\v\.(exe|so|dll)$'
+
+"== syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
