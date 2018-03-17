@@ -1,132 +1,98 @@
-"============== setting information ==============
+"============== general settings =======================
+" Map the leader key to SPACE
+let mapleader="\<SPACE>"
+
 scriptencoding utf-8
 set encoding=utf-8
 set fenc=utf-8
 set termencoding=utf-8
-set term=screen-256color
+set term=xterm-256color
 
-set hlsearch
-set ts=2
-set expandtab
-set rnu
-set cindent
-set autoindent
-set smartindent
-set wrap
-set ruler
-set shiftwidth=2
-set ff=unix
-set lazyredraw
+set showmatch           " Show matching brackets.
+set number              " Show the line numbers on the left side.
+set formatoptions+=o    " Continue comment marker in new lines.
+set expandtab           " Insert spaces when TAB is pressed.
+set tabstop=4           " Render TABs using this many spaces.
+set shiftwidth=4        " Indentation amount for < and > commands.
+
+set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
+
+" More natural splits
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.
 
 set backspace=eol,start,indent
 
-set noerrorbells
-set novisualbell
-
-set showmatch
-
-"For vim-airline
-set t_Co=256
-set laststatus=2
-
-" Folding
-set foldmethod=marker
-set fdm=marker
-syntax on
-filetype on
-
-set noswapfile
-
-set cursorline
-"set cursorcolumn
-
-"set textwidth=80
-"set cc=81
-
-set wildmenu
-
-"====== diff mode ======
-if &diff
-	syntax off
+if !&scrolloff
+	set scrolloff=3       	" Show next 3 lines while scrolling.
 endif
 
-"====== set auto changing to current dir ======
-"set autochdir
-"autocmd BufEnter * silent! lcd %:p:h
+if !&sidescrolloff
+	set sidescrolloff=5 	" Show next 5 columns while side-scrolling.
+endif
+set nostartofline		" Do not jump to first character with page commands.
 
-"====== set for cpp ======
-au Bufenter *.\(c\|cc\|cpp\|h\) set et
+" Tell Vim which characters to show for expanded TABs,
+" trailing whitespace, and end-of-lines. VERY useful!
+if &listchars ==# 'eol:$'
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+set list                " Show problematic characters.
 
-"============= set vundle ========================
-set nocompatible
-filetype off
+" Also highlight all tabs and trailing whitespace characters.
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$\|\t/
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set ignorecase          " Make searching case insensitive
+set smartcase           " ... unless the query has capital letters.
+set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 
-Plugin 'gmarik/Vundle.vim'
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+    nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
 
-"============= My vundle plugin list ============
-Plugin 'superSnipMate'
-Plugin 'matchparenpp'
-Plugin 'gtags.vim'
-Plugin 'The-NERD-tree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'http://github.com/vim-scripts/SrcExpl'
-Plugin 'vim-livedown' "manual install
+" Search and Replace
+nmap <Leader>s :%s//g<Left><Left>
 
-"For development
-Plugin 'a.vim'
-Plugin 'SingleCompile'
-
-Plugin 'scrooloose/syntastic'
-Plugin 'pathogen.vim'
-Plugin 'AutoComplPop'
-
-"For node.js
-Plugin 'node.js'
-Plugin 'jade.vim'
-
-"Markdown
-Plugin 'MarkdownFootnotes'
-Plugin 'Markdown'
-Plugin 'Markdown-syntax'
-
-"For python
-Plugin 'hynek/vim-python-pep8-indent'
-
-"colorschemes
-"Plugin 'vim-colors-solarized' "manual install
-Plugin 'altercation/vim-colors-solarized'
-
-"vim-easy-align(manual install)
-Plugin 'junegunn/vim-easy-align'
-
-"For git
-Plugin 'fugitive.vim'
-
-Plugin 'ctrlp.vim'
-Plugin 'bufferlist.vim'
-
-call vundle#end()
-filetype plugin indent on
-
-"============== num func ======================
-let relativenumber=1
-set relativenumber
-set number
-
+" Relative numbering
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set norelativenumber
-		set nu
-	else
-		set relativenumber
-		set number
-	endif
+    if(&relativenumber == 1)
+        set nornu
+        set number
+    else
+        set rnu
+    endif
 endfunc
 
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+
+"============= set vim-plug========================
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug 'scrooloose/syntastic'
+
+Plug 'kien/ctrlp.vim'
+
+Plug 'valloric/youcompleteme'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
 
 "============== general key mapping ======================
 "Folding
@@ -138,9 +104,6 @@ nmap <F5> :Tlist<CR><C-W><C-W>
 nmap <F6> :SrcExplToggle<CR>
 map <F7> :call NumberToggle()<CR>
 nmap <F8> :NERDTreeToggle .<CR>
-
-nmap <F9> :SCCompiler<CR>
-nmap <F10> :SCCompilerRun<CR>
 
 map <PageUp> <C-U><C-U>
 map <PageDown> <C-D><C-D>
@@ -163,12 +126,6 @@ let NERDTreeWinPos="left"
 
 "autocmd vimenter * NERDTree
 
-"============== c.vim settings =======================
-"
-let g:C_UseTool_cmake='yes'
-let g:C_UseTool_doxygen='yes'
-
-
 "============== gtags.vim settings =======================
 "let g:Gtags_Auto_Update=1
 "nmap <C-]> :Gtags<CR><CR>
@@ -186,15 +143,17 @@ let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -R ."
 let g:SrcExpl_updateTagsKey="<F12>"
 
 "============== vim-airline settings =======================
-let g:airline_powerline_fonts=1
-let g:airline_theme='powerlineish'
-let g:airline_enable_branch=1
-let g:airline_enable_syntastic=1
-
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':t'
-"let g:airline#extensions#tabline#left_sep=' '
-"let g:airline#extensions#tabline#left_alt_sep='|'
+let g:airline#extensions#tabline#enabled = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
+let g:airline_theme= 'simple'
 
 "============== vim-livedown settings =======================
 let g:livedown_autorun=0
@@ -206,9 +165,6 @@ nmap gm :LivedownPreview<CR>
 "====== vim-easy-align settings ======
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-"====== vim-cpplint settings ======
-"autocmd BufWritePost *.h,*.cc,*.cpp call Cpplint()
 
 "====== vim-ctrlspace settings ======
 set hidden
@@ -232,9 +188,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore += '\v\.(exe|so|dll)$'
-
-"====== pathogen settings ======
-execute pathogen#infect()
 
 "====== syntastic settings ======
 set statusline+=%#warningmsg#
