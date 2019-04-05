@@ -16,12 +16,14 @@ Plug 'scrooloose/syntastic'
 
 Plug 'kien/ctrlp.vim'
 
-Plug 'valloric/youcompleteme'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'airblade/vim-gitgutter'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'rip-rip/clang_complete'
 
 call plug#end()
 
@@ -154,4 +156,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+"== Deoplete.
+let g:deoplete#enable_at_startup = 1
 
+"== clang_complete
+"let g:clang_library_path='/usr/lib/llvm-6.0/lib'
+let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-6.0.so.1'
+set completeopt=preview
