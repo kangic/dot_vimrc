@@ -9,6 +9,8 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -23,7 +25,9 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'rip-rip/clang_complete'
+Plug 'justmao945/vim-clang'
+
+Plug 'vim-scripts/gtags.vim'
 
 call plug#end()
 
@@ -87,19 +91,6 @@ endif
 " Search and Replace
 nmap <Leader>s :%s//g<Left><Left>
 
-" Relative numbering
-function! NumberToggle()
-    if(&relativenumber == 1)
-        set nornu
-        set number
-    else
-        set rnu
-    endif
-endfunc
-
-" Toggle between normal and relative numbering.
-nnoremap <leader>r :call NumberToggle()<cr>
-
 " buffer moving settings
 set hidden
 nnoremap <S-l> :bnext<CR>
@@ -159,7 +150,13 @@ let g:syntastic_check_on_wq = 0
 "== Deoplete.
 let g:deoplete#enable_at_startup = 1
 
-"== clang_complete
-"let g:clang_library_path='/usr/lib/llvm-6.0/lib'
-let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-6.0.so.1'
-set completeopt=preview
+"== vim-clang
+let g:clang_c_options='-std=gnu11'
+let g:clang_cpp_options='-std=c++11 -stdlib=libc++'
+
+"== vim-clang
+let g:Gtags_Auto_Update=1
+nmap <C-]> :Gtags<CR><CR>
+nmap <C-\> :Gtags -r<CR><CR>
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
