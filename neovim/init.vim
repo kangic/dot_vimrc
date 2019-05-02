@@ -25,6 +25,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'rip-rip/clang_complete'
 
+Plug 'jceb/vim-orgmode'
+
 call plug#end()
 
 
