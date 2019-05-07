@@ -29,14 +29,13 @@ Plug 'justmao945/vim-clang'
 
 Plug 'vim-scripts/gtags.vim'
 
-Plug 'jceb/vim-orgmode'
-
 call plug#end()
 
 
 "== general settings
 " Map the leader key to SPACE
 let mapleader="\<SPACE>"
+let maplocalleader="\<SPACE>"
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -157,7 +156,7 @@ let g:deoplete#enable_at_startup = 1
 let g:clang_c_options='-std=gnu11'
 let g:clang_cpp_options='-std=c++11 -stdlib=libc++'
 
-"== vim-clang
+"== gtags
 let g:Gtags_Auto_Update=1
 nmap <C-]> :Gtags<CR><CR>
 nmap <C-\> :Gtags -r<CR><CR>
