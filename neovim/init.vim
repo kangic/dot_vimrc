@@ -14,8 +14,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-Plug 'scrooloose/syntastic'
-
 Plug 'kien/ctrlp.vim'
 
 Plug 'vim-airline/vim-airline'
@@ -28,6 +26,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'justmao945/vim-clang'
 
 Plug 'vim-scripts/gtags.vim'
+
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -139,16 +139,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore += '\v\.(exe|so|dll)$'
 
-"== syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 "== Deoplete.
 let g:deoplete#enable_at_startup = 1
 
@@ -162,3 +152,11 @@ nmap <C-]> :Gtags<CR><CR>
 nmap <C-\> :Gtags -r<CR><CR>
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
+
+"== vim-wiki
+let wiki = {}
+let wiki.path = '~/workspace/raymondk/kangic.github.io/_wiki/'
+let wiki.ext = '.md'
+
+let g:vimwiki_list = [wiki]
+let g:vimwiki_conceallevel = 0
